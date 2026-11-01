@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dqnfc4t7dg5bg"]
+
+[ext_resource type="PackedScene" uid="uid://dbuv8br12d7te" path="res://character/Player.tscn" id="1_p852c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq0bp"]
+size = Vector2(2317, 97)
+
+[node name="StorageRoom" type="Node2D" unique_id=1394655108]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1381862715]
+offset_right = 2312.0
+offset_bottom = 648.0
+color = Color(1, 0.7411765, 0.7921569, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=579516447]
+
+[node name="ColorRect2" type="ColorRect" parent="Node2D" unique_id=1812984462]
+offset_left = 1096.0
+offset_top = 144.0
+offset_right = 1368.0
+offset_bottom = 552.0
+
+[node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=267471337]
+offset_left = 776.0
+offset_top = 144.0
+offset_right = 1048.0
+offset_bottom = 552.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=391518173]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=128710256]
+offset_top = 552.0
+offset_right = 2320.0
+offset_bottom = 648.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1408192822]
+position = Vector2(1153.5, 600.5)
+shape = SubResource("RectangleShape2D_tq0bp")
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=358770358]
+
+[node name="Sprite2D" type="Node2D" parent="Node2D2" unique_id=605979797]
+
+[node name="Node2D3" type="Node2D" parent="." unique_id=1713521670]
+
+[node name="Player" parent="." unique_id=1071158097 instance=ExtResource("1_p852c")]
+position = Vector2(176, 480)
