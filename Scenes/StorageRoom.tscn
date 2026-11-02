@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dqnfc4t7dg5bg"]
 
+[ext_resource type="Texture2D" uid="uid://bd8e5wee8p87x" path="res://icon.svg" id="1_drf7g"]
 [ext_resource type="PackedScene" uid="uid://dbuv8br12d7te" path="res://character/Player.tscn" id="1_p852c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq0bp"]
@@ -12,36 +13,124 @@ offset_right = 2312.0
 offset_bottom = 648.0
 color = Color(1, 0.7411765, 0.7921569, 1)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=579516447]
+[node name="Shelf_Door_Window" type="Node2D" parent="." unique_id=579516447]
 
-[node name="ColorRect2" type="ColorRect" parent="Node2D" unique_id=1812984462]
+[node name="ColorRect2" type="ColorRect" parent="Shelf_Door_Window" unique_id=1812984462]
 offset_left = 1096.0
 offset_top = 144.0
 offset_right = 1368.0
 offset_bottom = 552.0
 
-[node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=267471337]
+[node name="ColorRect" type="ColorRect" parent="Shelf_Door_Window" unique_id=267471337]
 offset_left = 776.0
 offset_top = 144.0
 offset_right = 1048.0
 offset_bottom = 552.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=391518173]
+[node name="ColorRect" type="ColorRect" parent="Shelf_Door_Window/ColorRect" unique_id=1603087335]
+layout_mode = 0
+offset_left = -752.0
+offset_top = 224.0
+offset_right = -480.0
+offset_bottom = 408.0
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=128710256]
+[node name="ColorRect" type="ColorRect" parent="Shelf_Door_Window/ColorRect/ColorRect" unique_id=1630326823]
+layout_mode = 0
+offset_left = -752.0
+offset_top = 224.0
+offset_right = -480.0
+offset_bottom = 408.0
+
+[node name="ColorRect3" type="ColorRect" parent="Shelf_Door_Window" unique_id=444741260]
+offset_left = 368.0
+offset_top = 272.0
+offset_right = 560.0
+offset_bottom = 552.0
+
+[node name="ColorRect4" type="ColorRect" parent="Shelf_Door_Window" unique_id=1218544215]
+offset_left = 56.0
+offset_top = 64.0
+offset_right = 288.0
+offset_bottom = 296.0
+
+[node name="ColorRect5" type="ColorRect" parent="Shelf_Door_Window" unique_id=907170539]
+offset_left = 1416.0
+offset_top = 464.0
+offset_right = 1568.0
+offset_bottom = 552.0
+
+[node name="ColorRect6" type="ColorRect" parent="Shelf_Door_Window" unique_id=789400754]
+offset_left = 1456.0
+offset_top = 184.0
+offset_right = 1832.0
+offset_bottom = 224.0
+
+[node name="ColorRect7" type="ColorRect" parent="Shelf_Door_Window" unique_id=1919507962]
+offset_left = 1456.0
+offset_top = 304.0
+offset_right = 1832.0
+offset_bottom = 344.0
+
+[node name="ColorRect7" type="ColorRect" parent="Shelf_Door_Window/ColorRect7" unique_id=869723391]
+layout_mode = 0
+offset_left = 408.0
+offset_top = -120.0
+offset_right = 682.8415
+offset_bottom = -80.0
+rotation = 1.5707964
+
+[node name="ColorRect7" type="ColorRect" parent="Shelf_Door_Window/ColorRect7/ColorRect7" unique_id=682389376]
+layout_mode = 0
+offset_left = 272.0
+offset_top = -120.0
+offset_right = 398.30515
+offset_bottom = -80.0
+rotation = 1.5707964
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=391518173]
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=128710256]
 offset_top = 552.0
 offset_right = 2320.0
 offset_bottom = 648.0
+color = Color(1, 0.43137255, 1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1408192822]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1408192822]
 position = Vector2(1153.5, 600.5)
 shape = SubResource("RectangleShape2D_tq0bp")
 
-[node name="Node2D2" type="Node2D" parent="." unique_id=358770358]
+[node name="boxes" type="Node2D" parent="." unique_id=762352950]
 
-[node name="Sprite2D" type="Node2D" parent="Node2D2" unique_id=605979797]
+[node name="ColorRect" type="ColorRect" parent="boxes" unique_id=132290925]
+offset_left = 600.0
+offset_top = 472.0
+offset_right = 736.0
+offset_bottom = 585.0
+color = Color(0.33333334, 1, 1, 1)
+
+[node name="Items" type="Node2D" parent="." unique_id=358770358]
+
+[node name="Sprite2D" type="Node2D" parent="Items" unique_id=605979797]
+
+[node name="ColorRect2" type="ColorRect" parent="Items" unique_id=1586508173]
+offset_left = 984.0
+offset_top = 408.0
+offset_right = 1080.0
+offset_bottom = 496.0
+color = Color(1, 0.5294118, 0.5686275, 1)
+
+[node name="pumpkin" type="Sprite2D" parent="Items" unique_id=1477894307]
+position = Vector2(848, 447.99997)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("1_drf7g")
 
 [node name="Node2D3" type="Node2D" parent="." unique_id=1713521670]
 
 [node name="Player" parent="." unique_id=1071158097 instance=ExtResource("1_p852c")]
-position = Vector2(176, 480)
+position = Vector2(504, 480)
+
+[node name="pumpkin_spot" type="Marker2D" parent="." unique_id=462807544]
+position = Vector2(848, 456)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=997025093]
+position = Vector2(0, 648)

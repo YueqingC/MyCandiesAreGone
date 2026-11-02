@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bvs4q6uucvebo"]
+
+[ext_resource type="Script" uid="uid://d4ki74t3c00e0" path="res://Scenes/start_screen.gd" id="1_ko4ly"]
+
+[sub_resource type="Gradient" id="Gradient_0on6r"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tq0bp"]
+gradient = SubResource("Gradient_0on6r")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tq0bp"]
+
+[node name="StartScreen" type="Control" unique_id=1784964361]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ko4ly")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1768733481]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture1D_tq0bp")
+
+[node name="Button2" type="Button" parent="." unique_id=1022405579]
+layout_mode = 0
+offset_left = 711.0
+offset_top = 453.0
+offset_right = 1115.0
+offset_bottom = 625.0
+text = "Quit"
+icon = SubResource("PlaceholderTexture2D_tq0bp")
+
+[node name="Button" type="Button" parent="." unique_id=1760294924]
+layout_mode = 0
+offset_left = 711.0
+offset_top = 249.0
+offset_right = 1115.0
+offset_bottom = 421.0
+text = "Start"
+icon = SubResource("PlaceholderTexture2D_tq0bp")

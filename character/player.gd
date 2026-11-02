@@ -1,8 +1,14 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 350.0
+const JUMP_VELOCITY = -500.0
+const interaction = 24
+
+@onready var pumpkin = $"Items/pumpkin"
+@onready var pumpkin_spot = $"pumpkin_spot"
+
+var holding = false
 
 
 func _physics_process(delta: float) -> void:
@@ -23,3 +29,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _process(_delta):
+	if Input.is_action_just_pressed("interact"):
+		if not holding:
+			if (global_position.distance_to(pumpkin.global_position) <= interaction):
+				pumpkin.global_position = pumpkin_spot.global_position
+		
