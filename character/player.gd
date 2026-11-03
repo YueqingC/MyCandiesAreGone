@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 350.0
+const SPEED = 400.0
 const JUMP_VELOCITY = -500.0
 const interaction = 50
 
@@ -22,7 +22,12 @@ var placed = [false, false, false, false]
 ]
 
 @onready var flags_interact_spot = $"../SnapPoints/flags_interact_spot"
+@onready var candyJar_interact_spot = $"../SnapPoints/canyJar_interact_spot"
+@onready var pumpkin_interact_spot = $"../SnapPoints/pumpkin_interact_spot"
 
+@onready var pumpkinHint = $"../pumpkinHint"
+@onready var candyJarHint = $"../candyJarHint"
+@onready var flagsHint = $"../flagsHint"
 
 func _physics_process(delta: float) -> void:
 	
@@ -45,6 +50,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta):
+	if global_position.x <= 0:
+		global_position.x = 0
+	elif global_position.x >= 2320:
+		global_position.x = 2320
+	
+	
+	pumpkinHint.visible = (holding == 0)
+	candyJarHint.visible = (holding == 2)
+	flagsHint.visible = (holding == 3)
+	
 	if holding != -1:
 		items[holding].global_position = global_position + Vector2(0, -24)
 		
@@ -61,19 +76,34 @@ func _process(_delta):
 		else:
 			var target = spots[holding].global_position
 			print("Currently holding pumpkin!")
+			if holding == 0:
+				print("true")
+				target = pumpkin_interact_spot.global_position
+			if holding == 1:
+				print("true")
+				target = candyJar_interact_spot.global_position
 			if holding == 3:
+				print("true")
 				target = flags_interact_spot.global_position
 				
 			if (global_position.distance_to(target) <= interaction):
 				items[holding].global_position = spots[holding].global_position
+				if holding == 3:
+					items[holding].scale = Vector2(0.767, 0.576)
 				items[holding].z_index = 0
 				placed[holding] = true
 				print("Placed")
+				pumpkinHint.visible = false
+				candyJarHint.visible = false
+				flagsHint.visible = false
 				holding = -1
 			else:
 				print("too far")
 				
 func _ready():
+	pumpkinHint.visible = false
+	candyJarHint.visible = false
+	flagsHint.visible = false
 	print("Flags interaction point: ", flags_interact_spot)
 	for i in range(items.size()):
 		print("Item ", i, ": ", items[i])
