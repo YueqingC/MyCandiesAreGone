@@ -3,15 +3,29 @@ extends CharacterBody2D
 
 const SPEED = 350.0
 const JUMP_VELOCITY = -500.0
-const interaction = 24
+const interaction = 50
 
-@onready var pumpkin = $"Items/pumpkin"
-@onready var pumpkin_spot = $"pumpkin_spot"
+var holding = -1
+var placed = [false, false, false, false]
 
-var holding = false
+@onready var items = [
+	$"../Items/pumpkin",
+	$"../Items/lamp",
+	$"../Items/candyJar",
+	$"../Items/flags"
+	]
+@onready var spots = [
+	$"../SnapPoints/pumpkin_spot",
+	$"../SnapPoints/lamp_spot",
+	$"../SnapPoints/candyJar_spot",
+	$"../SnapPoints/flags_spot",
+]
+
+@onready var flags_interact_spot = $"../SnapPoints/flags_interact_spot"
 
 
 func _physics_process(delta: float) -> void:
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -31,8 +45,36 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
-		if not holding:
-			if (global_position.distance_to(pumpkin.global_position) <= interaction):
-				pumpkin.global_position = pumpkin_spot.global_position
+	if holding != -1:
+		items[holding].global_position = global_position + Vector2(0, -24)
 		
+	if Input.is_action_just_pressed("interact"):
+		print("e")
+		if holding == -1:
+			for i in range(items.size()):
+				if not placed[i]:
+					if global_position.distance_to(items[i].global_position) <= interaction:
+						holding = i
+						items[i].z_index = 2
+						print("Picked up: ", items[i].name)
+						break
+		else:
+			var target = spots[holding].global_position
+			print("Currently holding pumpkin!")
+			if holding == 3:
+				target = flags_interact_spot.global_position
+				
+			if (global_position.distance_to(target) <= interaction):
+				items[holding].global_position = spots[holding].global_position
+				items[holding].z_index = 0
+				placed[holding] = true
+				print("Placed")
+				holding = -1
+			else:
+				print("too far")
+				
+func _ready():
+	print("Flags interaction point: ", flags_interact_spot)
+	for i in range(items.size()):
+		print("Item ", i, ": ", items[i])
+		print("Spot ", i, ": ", spots[i])

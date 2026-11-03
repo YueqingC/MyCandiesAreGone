@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bd8e5wee8p87x" path="res://icon.svg" id="1_drf7g"]
 [ext_resource type="PackedScene" uid="uid://dbuv8br12d7te" path="res://character/Player.tscn" id="1_p852c"]
+[ext_resource type="Script" uid="uid://d2ba13rlpf1aw" path="res://Scenes/pickup_item.gd" id="2_y6nyw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tq0bp"]
 size = Vector2(2317, 97)
@@ -28,13 +29,6 @@ offset_right = 1048.0
 offset_bottom = 552.0
 
 [node name="ColorRect" type="ColorRect" parent="Shelf_Door_Window/ColorRect" unique_id=1603087335]
-layout_mode = 0
-offset_left = -752.0
-offset_top = 224.0
-offset_right = -480.0
-offset_bottom = 408.0
-
-[node name="ColorRect" type="ColorRect" parent="Shelf_Door_Window/ColorRect/ColorRect" unique_id=1630326823]
 layout_mode = 0
 offset_left = -752.0
 offset_top = 224.0
@@ -110,27 +104,56 @@ color = Color(0.33333334, 1, 1, 1)
 
 [node name="Items" type="Node2D" parent="." unique_id=358770358]
 
-[node name="Sprite2D" type="Node2D" parent="Items" unique_id=605979797]
-
-[node name="ColorRect2" type="ColorRect" parent="Items" unique_id=1586508173]
-offset_left = 984.0
-offset_top = 408.0
-offset_right = 1080.0
-offset_bottom = 496.0
-color = Color(1, 0.5294118, 0.5686275, 1)
-
 [node name="pumpkin" type="Sprite2D" parent="Items" unique_id=1477894307]
 position = Vector2(848, 447.99997)
 scale = Vector2(0.625, 0.625)
 texture = ExtResource("1_drf7g")
+script = ExtResource("2_y6nyw")
+
+[node name="lamp" type="Sprite2D" parent="Items" unique_id=724769437]
+position = Vector2(1920, 392)
+scale = Vector2(0.390625, 0.390625)
+texture = ExtResource("1_drf7g")
+
+[node name="candyJar" type="Sprite2D" parent="Items" unique_id=1482802397]
+position = Vector2(1168, 464.00003)
+scale = Vector2(0.24414063, 0.24414063)
+texture = ExtResource("1_drf7g")
+
+[node name="flags" type="Sprite2D" parent="Items" unique_id=2076190542]
+position = Vector2(2152, 384)
+scale = Vector2(0.5762931, 0.57629395)
+texture = ExtResource("1_drf7g")
+
+[node name="SnapPoints" type="Node2D" parent="." unique_id=1310852148]
+position = Vector2(848, 447.99997)
+scale = Vector2(0.625, 0.625)
+
+[node name="pumpkin_spot" type="Marker2D" parent="SnapPoints" unique_id=462807544]
+position = Vector2(0, 12.800049)
+scale = Vector2(1.5999999, 1.5999999)
+
+[node name="lamp_spot" type="Marker2D" parent="SnapPoints" unique_id=577406238]
+position = Vector2(1715.2002, -89.599945)
+scale = Vector2(1.5999999, 1.5999999)
+
+[node name="candyJar_spot" type="Marker2D" parent="SnapPoints" unique_id=360728826]
+position = Vector2(511.99997, 25.600048)
+scale = Vector2(1.5999999, 1.5999999)
+
+[node name="flags_spot" type="Marker2D" parent="SnapPoints" unique_id=175862618]
+position = Vector2(2086.4, -102.39996)
+scale = Vector2(1.5999999, 1.5999999)
+
+[node name="flags_interact_spot" type="Marker2D" parent="SnapPoints" unique_id=1152807191]
+position = Vector2(2086.4, 64.000046)
+scale = Vector2(1.5999999, 1.5999999)
 
 [node name="Node2D3" type="Node2D" parent="." unique_id=1713521670]
 
 [node name="Player" parent="." unique_id=1071158097 instance=ExtResource("1_p852c")]
+z_index = 1
 position = Vector2(504, 480)
-
-[node name="pumpkin_spot" type="Marker2D" parent="." unique_id=462807544]
-position = Vector2(848, 456)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=997025093]
 position = Vector2(0, 648)
