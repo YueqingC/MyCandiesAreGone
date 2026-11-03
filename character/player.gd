@@ -22,7 +22,7 @@ var placed = [false, false, false, false]
 ]
 
 @onready var flags_interact_spot = $"../SnapPoints/flags_interact_spot"
-@onready var candyJar_interact_spot = $"../SnapPoints/canyJar_interact_spot"
+@onready var candyJar_interact_spot = $"../SnapPoints/candyJar_interact_spot"
 @onready var pumpkin_interact_spot = $"../SnapPoints/pumpkin_interact_spot"
 
 @onready var pumpkinHint = $"../pumpkinHint"
@@ -79,7 +79,7 @@ func _process(_delta):
 			if holding == 0:
 				print("true")
 				target = pumpkin_interact_spot.global_position
-			if holding == 1:
+			if holding == 2:
 				print("true")
 				target = candyJar_interact_spot.global_position
 			if holding == 3:
